@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{FF6F8260-ABB7-4B41-B420-D8573743C534}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Protocol.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Protocol">
+        <MSBuild Projects="Protocol.dproj"/>
+    </Target>
+    <Target Name="Protocol:Clean">
+        <MSBuild Projects="Protocol.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Protocol:Make">
+        <MSBuild Projects="Protocol.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Protocol"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Protocol:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Protocol:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
