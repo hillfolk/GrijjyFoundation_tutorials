@@ -2,7 +2,8 @@ program ProtocolBuffer;
 
 uses
   Vcl.Forms,
-  uMain in 'uMain.pas' {Form2};
+  uMain in 'uMain.pas' {Form2},
+  Grijjy.ProtocolBuffers in '..\..\GrijjyFoundation\Grijjy.ProtocolBuffers.pas';
 
 {$R *.res}
 
