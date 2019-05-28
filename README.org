@@ -1,2 +1,8 @@
-GrijjyFoundation_tutorials
-Delphi, Grijjy
+#+TITLE:GrijjyFoundation_tutorials
+
+This repository is a Grijjy Foundation tutorial code.
+
+GrijjyFoundation Repositories
+https://github.com/grijjy/GrijjyFoundation.git
+
+** ProtocolBuffer
