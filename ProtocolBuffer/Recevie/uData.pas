@@ -21,12 +21,26 @@ uses Grijjy.ProtocolBuffers;
     public
       [Serialize(1)] Header: TMessageHeader;
       [Serialize(2)] Content: String;
-      [Serialize(3)] MsgTime: TDateTime;
+      [Serialize(3)] MsgTime: string;
     public
       procedure Initialize;
     end;
 
 
 implementation
+
+{ TMessageHeader }
+
+procedure TMessageHeader.Initialize;
+begin
+//
+end;
+
+{ TMessage }
+
+procedure TMessage.Initialize;
+begin
+//
+end;
 
 end.

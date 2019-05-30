@@ -22,8 +22,43 @@ object fxReceiverDataView: TfxReceiverDataView
       'Memo1')
     TabOrder = 0
   end
+  object scToggleSwitch1: TscToggleSwitch
+    Left = 8
+    Top = 157
+    Width = 80
+    Height = 35
+    TabOrder = 1
+    TabStop = True
+    OnClick = scToggleSwitch1Click
+    Animation = True
+    CaptionOn = 'On'
+    CaptionOff = 'Off'
+    CanFocused = True
+    FrameColor = clBtnText
+    FrameOnColor = clHighlight
+    FramePressedColor = clBtnShadow
+    FrameImageIndex = -1
+    FrameOnImageIndex = -1
+    FramePressedImageIndex = -1
+    ParentColor = True
+    SwitchWidth = 40
+    SwitchHeight = 20
+    State = scswOff
+    StyleKind = scswsStyled
+    ShowCaption = True
+    ThumbColor = clBtnText
+    ThumbOnColor = clHighlightText
+    ThumbPressedColor = clBtnText
+    ThumbImageIndex = -1
+    ThumbOnImageIndex = -1
+    ThumbPressedImageIndex = -1
+    ThumbWidth = 0
+    UseFontColorToStyleColor = False
+  end
   object WSocketServer1: TWSocketServer
     LineEnd = #13#10
+    Addr = '0.0.0.0'
+    Port = '5000'
     Proto = 'tcp'
     LocalAddr = '0.0.0.0'
     LocalAddr6 = '::'
@@ -31,6 +66,7 @@ object fxReceiverDataView: TfxReceiverDataView
     SocksLevel = '5'
     ExclusiveAddr = False
     ComponentOptions = []
+    OnDataAvailable = WSocketServer1DataAvailable
     SocketErrs = wsErrTech
     MultiListenSockets = <>
     Left = 32
