@@ -1,9 +1,9 @@
 object fxSendView: TfxSendView
   Left = 0
   Top = 0
-  Caption = 'SendDataView'
-  ClientHeight = 192
-  ClientWidth = 374
+  Caption = 'ProtocolBuffer Sender'
+  ClientHeight = 203
+  ClientWidth = 337
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,17 +14,17 @@ object fxSendView: TfxSendView
   PixelsPerInch = 96
   TextHeight = 13
   object btnSendData: TButton
-    Left = 240
-    Top = 64
+    Left = 205
+    Top = 80
     Width = 113
-    Height = 49
+    Height = 40
     Caption = 'SendData'
     TabOrder = 0
     OnClick = btnSendDataClick
   end
   object scGPToggleSwitch1: TscGPToggleSwitch
-    Left = 24
-    Top = 144
+    Left = 238
+    Top = 8
     Width = 80
     Height = 35
     TabOrder = 1
@@ -58,6 +58,15 @@ object fxSendView: TfxSendView
     FrameInside = False
     OnChangeState = scGPToggleSwitch1ChangeState
   end
+  object Memo1: TMemo
+    Left = 8
+    Top = 80
+    Width = 185
+    Height = 89
+    Lines.Strings = (
+      'Memo1')
+    TabOrder = 2
+  end
   object WSocket1: TWSocket
     LineEnd = #13#10
     Addr = '127.0.0.1'
@@ -70,7 +79,7 @@ object fxSendView: TfxSendView
     ExclusiveAddr = False
     ComponentOptions = []
     SocketErrs = wsErrTech
-    Left = 40
-    Top = 80
+    Left = 32
+    Top = 24
   end
 end

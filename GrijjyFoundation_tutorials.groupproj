@@ -12,7 +12,7 @@
         <Projects Include="Http\HttpClient.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="ProtocolBuffer\Recevie\ProtocolBufferReceive.dproj">
+        <Projects Include="ProtocolBuffer\Recevie\ProtocolBufferReceiver.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -50,23 +50,23 @@
     <Target Name="HttpClient:Make">
         <MSBuild Projects="Http\HttpClient.dproj" Targets="Make"/>
     </Target>
-    <Target Name="ProtocolBufferReceive">
-        <MSBuild Projects="ProtocolBuffer\Recevie\ProtocolBufferReceive.dproj"/>
+    <Target Name="ProtocolBufferReceiver">
+        <MSBuild Projects="ProtocolBuffer\Recevie\ProtocolBufferReceiver.dproj"/>
     </Target>
-    <Target Name="ProtocolBufferReceive:Clean">
-        <MSBuild Projects="ProtocolBuffer\Recevie\ProtocolBufferReceive.dproj" Targets="Clean"/>
+    <Target Name="ProtocolBufferReceiver:Clean">
+        <MSBuild Projects="ProtocolBuffer\Recevie\ProtocolBufferReceiver.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="ProtocolBufferReceive:Make">
-        <MSBuild Projects="ProtocolBuffer\Recevie\ProtocolBufferReceive.dproj" Targets="Make"/>
+    <Target Name="ProtocolBufferReceiver:Make">
+        <MSBuild Projects="ProtocolBuffer\Recevie\ProtocolBufferReceiver.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="ProtocolBufferSender;BsonDocument;HttpClient;ProtocolBufferReceive"/>
+        <CallTarget Targets="ProtocolBufferSender;BsonDocument;HttpClient;ProtocolBufferReceiver"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="ProtocolBufferSender:Clean;BsonDocument:Clean;HttpClient:Clean;ProtocolBufferReceive:Clean"/>
+        <CallTarget Targets="ProtocolBufferSender:Clean;BsonDocument:Clean;HttpClient:Clean;ProtocolBufferReceiver:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="ProtocolBufferSender:Make;BsonDocument:Make;HttpClient:Make;ProtocolBufferReceive:Make"/>
+        <CallTarget Targets="ProtocolBufferSender:Make;BsonDocument:Make;HttpClient:Make;ProtocolBufferReceiver:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

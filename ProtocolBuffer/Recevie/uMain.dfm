@@ -29,7 +29,6 @@ object fxReceiverDataView: TfxReceiverDataView
     Height = 35
     TabOrder = 1
     TabStop = True
-    OnClick = scToggleSwitch1Click
     Animation = True
     CaptionOn = 'On'
     CaptionOff = 'Off'
@@ -54,6 +53,7 @@ object fxReceiverDataView: TfxReceiverDataView
     ThumbPressedImageIndex = -1
     ThumbWidth = 0
     UseFontColorToStyleColor = False
+    OnChangeState = scToggleSwitch1ChangeState
   end
   object WSocketServer1: TWSocketServer
     LineEnd = #13#10
@@ -67,6 +67,8 @@ object fxReceiverDataView: TfxReceiverDataView
     ExclusiveAddr = False
     ComponentOptions = []
     OnDataAvailable = WSocketServer1DataAvailable
+    OnSessionAvailable = WSocketServer1SessionAvailable
+    OnSessionConnected = WSocketServer1SessionConnected
     SocketErrs = wsErrTech
     MultiListenSockets = <>
     Left = 32
