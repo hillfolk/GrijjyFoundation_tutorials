@@ -10,21 +10,27 @@ object fxReceiverDataView: TfxReceiverDataView
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  Padding.Left = 10
+  Padding.Top = 10
+  Padding.Right = 10
+  Padding.Bottom = 10
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
   object Memo1: TMemo
-    Left = 120
-    Top = 8
+    Left = 110
+    Top = 10
     Width = 385
-    Height = 184
-    Lines.Strings = (
-      'Memo1')
+    Height = 180
+    Align = alRight
     TabOrder = 0
+    ExplicitLeft = 120
+    ExplicitTop = 8
+    ExplicitHeight = 184
   end
   object scToggleSwitch1: TscToggleSwitch
-    Left = 8
-    Top = 157
+    Left = 13
+    Top = 152
     Width = 80
     Height = 35
     TabOrder = 1
@@ -66,12 +72,13 @@ object fxReceiverDataView: TfxReceiverDataView
     SocksLevel = '5'
     ExclusiveAddr = False
     ComponentOptions = []
-    OnDataAvailable = WSocketServer1DataAvailable
     OnSessionAvailable = WSocketServer1SessionAvailable
     OnSessionConnected = WSocketServer1SessionConnected
     SocketErrs = wsErrTech
+    OnClientConnect = WSocketServer1ClientConnect
+    OnClientCreate = WSocketServer1ClientCreate
     MultiListenSockets = <>
     Left = 32
-    Top = 16
+    Top = 88
   end
 end

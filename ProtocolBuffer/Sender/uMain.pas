@@ -12,7 +12,8 @@ type
         WSocket1 : TWSocket;
         btnSendData : TButton;
         scGPToggleSwitch1 : TscGPToggleSwitch;
-        Memo1 : TMemo;
+        mLog : TMemo;
+    edtContent: TEdit;
         procedure btnSendDataClick(Sender : TObject);
         procedure scGPToggleSwitch1ChangeState(Sender : TObject);
     private
@@ -36,19 +37,20 @@ var
     LSendCnt  : Integer;
 begin
 
-    if WSocket1.State = wsOpened then begin
-    try
-        LData.Header.Token       := 'token_xxxx';
-        LData.Header.MessageType := Data;
-        LData.Content            := 'XXDXXXDXXXXXD';
-        LData.MsgTime            := DateTimeToStr(now);
-        LByteData                := TgoProtocolBuffer.Serialize(LData);
+    if WSocket1.State = wsConnected then begin
+        try
+            LData.Header.Token       := 'token_xxxx';
+            LData.Header.MessageType := Data;
+            LData.Content            := 'XXDXXXsadfasdfasdfsdfDXXXXXD';
+            LData.MsgTime            := DateTimeToStr(now);
+            LByteData                := TgoProtocolBuffer.Serialize(LData);
 
-        LSendCnt := WSocket1.Send(LByteData, Length(LByteData));
-        Log(IntToStr(LSendCnt));
-    except on E: Exception do
-    Log(E.Message);
-    end;
+            LSendCnt := WSocket1.Send(@LByteData, Length(LByteData)-1);
+            Log(IntToStr(LSendCnt));
+        except
+            on E : Exception do
+                Log(E.Message);
+        end;
 
     end;
 
@@ -56,7 +58,7 @@ end;
 
 procedure TfxSendView.Log(ALog : string);
 begin
-    Memo1.Lines.Insert(0, ALog);
+    mLog.Lines.Insert(0, ALog);
 end;
 
 procedure TfxSendView.scGPToggleSwitch1ChangeState(Sender : TObject);

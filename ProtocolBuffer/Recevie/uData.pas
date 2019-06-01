@@ -1,31 +1,35 @@
 unit uData;
 
 interface
+
 uses Grijjy.ProtocolBuffers;
 
+type
+    TMessageType = (Data, Command);
 
-  type
-    TMessageType = (Data,Command);
-
-  type
+type
     TMessageHeader = record
     public
-      [Serialize(1)] Token: String;
-      [Serialize(2)] MessageType: TMessageType;
+        [Serialize(1)]
+        Token : String;
+        [Serialize(2)]
+        MessageType : TMessageType;
     public
-      procedure Initialize;
+        procedure Initialize;
     end;
 
-  type
+type
     TMessage = record
     public
-      [Serialize(1)] Header: TMessageHeader;
-      [Serialize(2)] Content: String;
-      [Serialize(3)] MsgTime: string;
+        [Serialize(1)]
+        Header : TMessageHeader;
+        [Serialize(2)]
+        Content : String;
+        [Serialize(3)]
+        MsgTime : string;
     public
-      procedure Initialize;
+        procedure Initialize;
     end;
-
 
 implementation
 
@@ -33,7 +37,7 @@ implementation
 
 procedure TMessageHeader.Initialize;
 begin
-//
+  //
 end;
 
 { TMessage }

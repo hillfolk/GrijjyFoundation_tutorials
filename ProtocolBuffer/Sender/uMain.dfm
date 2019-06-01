@@ -58,14 +58,19 @@ object fxSendView: TfxSendView
     FrameInside = False
     OnChangeState = scGPToggleSwitch1ChangeState
   end
-  object Memo1: TMemo
-    Left = 8
+  object mLog: TMemo
+    Left = 14
     Top = 80
     Width = 185
-    Height = 89
-    Lines.Strings = (
-      'Memo1')
+    Height = 115
     TabOrder = 2
+  end
+  object edtContent: TEdit
+    Left = 16
+    Top = 8
+    Width = 201
+    Height = 21
+    TabOrder = 3
   end
   object WSocket1: TWSocket
     LineEnd = #13#10
@@ -79,7 +84,7 @@ object fxSendView: TfxSendView
     ExclusiveAddr = False
     ComponentOptions = []
     SocketErrs = wsErrTech
-    Left = 32
-    Top = 24
+    Left = 248
+    Top = 160
   end
 end
