@@ -3,7 +3,16 @@
         <ProjectGuid>{FF6F8260-ABB7-4B41-B420-D8573743C534}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="Protocol.dproj">
+        <Projects Include="ProtocolBuffer\Sender\ProtocolBufferSender.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Bson\BsonDocument.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Http\HttpClient.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ProtocolBuffer\Recevie\ProtocolBufferReceiver.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -14,23 +23,50 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="Protocol">
-        <MSBuild Projects="Protocol.dproj"/>
+    <Target Name="ProtocolBufferSender">
+        <MSBuild Projects="ProtocolBuffer\Sender\ProtocolBufferSender.dproj"/>
     </Target>
-    <Target Name="Protocol:Clean">
-        <MSBuild Projects="Protocol.dproj" Targets="Clean"/>
+    <Target Name="ProtocolBufferSender:Clean">
+        <MSBuild Projects="ProtocolBuffer\Sender\ProtocolBufferSender.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Protocol:Make">
-        <MSBuild Projects="Protocol.dproj" Targets="Make"/>
+    <Target Name="ProtocolBufferSender:Make">
+        <MSBuild Projects="ProtocolBuffer\Sender\ProtocolBufferSender.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="BsonDocument">
+        <MSBuild Projects="Bson\BsonDocument.dproj"/>
+    </Target>
+    <Target Name="BsonDocument:Clean">
+        <MSBuild Projects="Bson\BsonDocument.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BsonDocument:Make">
+        <MSBuild Projects="Bson\BsonDocument.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="HttpClient">
+        <MSBuild Projects="Http\HttpClient.dproj"/>
+    </Target>
+    <Target Name="HttpClient:Clean">
+        <MSBuild Projects="Http\HttpClient.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="HttpClient:Make">
+        <MSBuild Projects="Http\HttpClient.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ProtocolBufferReceiver">
+        <MSBuild Projects="ProtocolBuffer\Recevie\ProtocolBufferReceiver.dproj"/>
+    </Target>
+    <Target Name="ProtocolBufferReceiver:Clean">
+        <MSBuild Projects="ProtocolBuffer\Recevie\ProtocolBufferReceiver.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ProtocolBufferReceiver:Make">
+        <MSBuild Projects="ProtocolBuffer\Recevie\ProtocolBufferReceiver.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="Protocol"/>
+        <CallTarget Targets="ProtocolBufferSender;BsonDocument;HttpClient;ProtocolBufferReceiver"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Protocol:Clean"/>
+        <CallTarget Targets="ProtocolBufferSender:Clean;BsonDocument:Clean;HttpClient:Clean;ProtocolBufferReceiver:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Protocol:Make"/>
+        <CallTarget Targets="ProtocolBufferSender:Make;BsonDocument:Make;HttpClient:Make;ProtocolBufferReceiver:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

@@ -4,11 +4,10 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, OverbyteIcsWndControl, OverbyteIcsWSocket;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs;
 
 type
-  TfxSendView = class(TForm)
-    WSocket1: TWSocket;
+  TForm3 = class(TForm)
   private
     { Private declarations }
   public
@@ -16,7 +15,7 @@ type
   end;
 
 var
-  fxSendView: TfxSendView;
+  Form3: TForm3;
 
 implementation
 

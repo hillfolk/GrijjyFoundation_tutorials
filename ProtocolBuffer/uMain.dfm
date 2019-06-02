@@ -1,9 +1,9 @@
-object Form2: TForm2
+object fxSendView: TfxSendView
   Left = 0
   Top = 0
-  Caption = 'Form2'
-  ClientHeight = 299
-  ClientWidth = 635
+  Caption = 'SendDataView'
+  ClientHeight = 192
+  ClientWidth = 374
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,4 +13,17 @@ object Form2: TForm2
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
+  object WSocket1: TWSocket
+    LineEnd = #13#10
+    Proto = 'tcp'
+    LocalAddr = '0.0.0.0'
+    LocalAddr6 = '::'
+    LocalPort = '0'
+    SocksLevel = '5'
+    ExclusiveAddr = False
+    ComponentOptions = []
+    SocketErrs = wsErrTech
+    Left = 40
+    Top = 80
+  end
 end
