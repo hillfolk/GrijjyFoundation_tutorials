@@ -2,7 +2,7 @@ unit uData;
 
 interface
 
-uses Grijjy.ProtocolBuffers;
+uses Grijjy.ProtocolBuffers, System.SysUtils;
 
 type
     TMessageType = (Data, Command);
@@ -48,10 +48,11 @@ begin
     //
 end;
 
-function TMessage.toString: string;
+function TMessage.toString : string;
 begin
-  Result := '';
-  Result := Result +'MessageType:'+Integer(ord(Self.Header.MessageType))+ 'Token:' + Self.Header.Token +'Content' + Self.Content + 'MessageTime'
+    Result := '';
+    Result := Result +'MessageType:'+ IntToStr(ord(Self.Header.MessageType))+ 'Token:' + Self.Header.Token +
+        'Content' + Self.Content + 'MessageTime:' + Self.MsgTime;
 end;
 
 end.

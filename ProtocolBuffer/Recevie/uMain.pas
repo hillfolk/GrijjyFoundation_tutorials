@@ -42,16 +42,16 @@ var
     Len     : Integer;
     LData   : TMessage;
 begin
-
+    FillChar(LPacket, 1024, 0);
     Len := TWSocket(Sender).Receive(@LPacket, 1024);
     if Len <= 0 then
         Exit;
     { Nul terminate the data }
     try
-        SetLength(LDLBytesata,Len);
-        Move(LPacket[0],LBytes[0],Len);
+        SetLength(LBytes, Len);
+        Move(LPacket[0], LBytes[0], Len);
         TgoProtocolBuffer.Deserialize(LData, LBytes);
-        Log('DataAvailable: ''' + String('Content'+''+LData.Content+'Size:'+ IntToStr(Len)));
+        Log('Recevie ProtocolBuffer: '+''+LData.toString+'Size:'+ IntToStr(Len));
     except
         on E : Exception do
             Log(E.Message);
