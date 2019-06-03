@@ -12,8 +12,13 @@ type
         WSocket1 : TWSocket;
         btnSendData : TButton;
         scGPToggleSwitch1 : TscGPToggleSwitch;
+        edToken : TEdit;
+        Label1 : TLabel;
         mLog : TMemo;
-    edtContent: TEdit;
+        Label2 : TLabel;
+        edtContent : TEdit;
+        Label3 : TLabel;
+        cbMessageType : TComboBox;
         procedure btnSendDataClick(Sender : TObject);
         procedure scGPToggleSwitch1ChangeState(Sender : TObject);
     private
@@ -32,21 +37,21 @@ implementation
 
 procedure TfxSendView.btnSendDataClick(Sender : TObject);
 var
-    LData     : TMessage;
-    LByteData : TBytes;
-    LSendCnt  : Integer;
+    LMessage           : TMessage;
+    LByteData, LPacket : TBytes;
+    LSendCnt           : Integer;
 begin
 
     if WSocket1.State = wsConnected then begin
         try
-            LData.Header.Token       := 'token_xxxx';
-            LData.Header.MessageType := Data;
-            LData.Content            := 'XXDXXXsadfasdfasdfsdfDXXXXXD';
-            LData.MsgTime            := DateTimeToStr(now);
-            LByteData                := TgoProtocolBuffer.Serialize(LData);
+            LMessage.Header.Token       := edToken.Text;
+            LMessage.Header.MessageType := TMessageType(cbMessageType.ItemIndex);
+            LMessage.Content            := edtContent.Text;
+            LMessage.MsgTime            := DateTimeToStr(now);
+            LByteData                   := TgoProtocolBuffer.Serialize(LMessage);
 
-            LSendCnt := WSocket1.Send(@LByteData, Length(LByteData)-1);
-            Log(IntToStr(LSendCnt));
+            LSendCnt := WSocket1.Send(LByteData, Length(LByteData));
+            Log('Send Size:'+ IntToStr(LSendCnt));
         except
             on E : Exception do
                 Log(E.Message);

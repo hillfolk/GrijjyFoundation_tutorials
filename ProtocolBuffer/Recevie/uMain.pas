@@ -5,7 +5,7 @@ interface
 uses
     Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
     Vcl.Controls, Vcl.Forms, Vcl.Dialogs, OverbyteIcsWndControl, OverbyteIcsWSocket, OverbyteIcsWSocketS,
-    Vcl.StdCtrls, scControls, scModernControls, Grijjy.ProtocolBuffers;
+    Vcl.StdCtrls, scControls, scModernControls, Grijjy.ProtocolBuffers, uData;
 
 type
     TfxReceiverDataView = class(TForm)
@@ -37,18 +37,25 @@ implementation
 
 procedure TfxReceiverDataView.ClientDataAvailable(Sender : TObject; Error : Word);
 var
-    Buf : array [0..127] of AnsiChar;
-    Len : Integer;
+    LPacket : array [0..1023] of Byte;
+    LBytes  : TBytes;
+    Len     : Integer;
+    LData   : TMessage;
 begin
-    Len := TWSocket(Sender).Receive(@Buf, Sizeof(Buf) - 1);
+
+    Len := TWSocket(Sender).Receive(@LPacket, 1024);
     if Len <= 0 then
         Exit;
-    { Remove any trailing CR/LF }
-    while (Len > 0) and (Buf[Len - 1] in [#13, #10]) do
-        Dec(Len);
     { Nul terminate the data }
-    Buf[Len] := #0;
-    Log('DataAvailable: ''' + String(Buf) + '''');
+    try
+        SetLength(LDLBytesata,Len);
+        Move(LPacket[0],LBytes[0],Len);
+        TgoProtocolBuffer.Deserialize(LData, LBytes);
+        Log('DataAvailable: ''' + String('Content'+''+LData.Content+'Size:'+ IntToStr(Len)));
+    except
+        on E : Exception do
+            Log(E.Message);
+    end;
 
 end;
 

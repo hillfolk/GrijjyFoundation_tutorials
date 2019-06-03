@@ -29,6 +29,7 @@ type
         MsgTime : string;
     public
         procedure Initialize;
+        function toString : string;
     end;
 
 implementation
@@ -37,14 +38,20 @@ implementation
 
 procedure TMessageHeader.Initialize;
 begin
-  //
+    //
 end;
 
 { TMessage }
 
 procedure TMessage.Initialize;
 begin
-//
+    //
+end;
+
+function TMessage.toString: string;
+begin
+  Result := '';
+  Result := Result +'MessageType:'+Integer(ord(Self.Header.MessageType))+ 'Token:' + Self.Header.Token +'Content' + Self.Content + 'MessageTime'
 end;
 
 end.

@@ -24,9 +24,6 @@ object fxReceiverDataView: TfxReceiverDataView
     Height = 180
     Align = alRight
     TabOrder = 0
-    ExplicitLeft = 120
-    ExplicitTop = 8
-    ExplicitHeight = 184
   end
   object scToggleSwitch1: TscToggleSwitch
     Left = 13
