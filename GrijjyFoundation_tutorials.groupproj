@@ -6,9 +6,6 @@
         <Projects Include="ProtocolBuffer\Sender\ProtocolBufferSender.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Bson\BsonDocument.dproj">
-            <Dependencies/>
-        </Projects>
         <Projects Include="Http\HttpClient.dproj">
             <Dependencies/>
         </Projects>
@@ -32,15 +29,6 @@
     <Target Name="ProtocolBufferSender:Make">
         <MSBuild Projects="ProtocolBuffer\Sender\ProtocolBufferSender.dproj" Targets="Make"/>
     </Target>
-    <Target Name="BsonDocument">
-        <MSBuild Projects="Bson\BsonDocument.dproj"/>
-    </Target>
-    <Target Name="BsonDocument:Clean">
-        <MSBuild Projects="Bson\BsonDocument.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="BsonDocument:Make">
-        <MSBuild Projects="Bson\BsonDocument.dproj" Targets="Make"/>
-    </Target>
     <Target Name="HttpClient">
         <MSBuild Projects="Http\HttpClient.dproj"/>
     </Target>
@@ -60,13 +48,13 @@
         <MSBuild Projects="ProtocolBuffer\Recevie\ProtocolBufferReceiver.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="ProtocolBufferSender;BsonDocument;HttpClient;ProtocolBufferReceiver"/>
+        <CallTarget Targets="ProtocolBufferSender;HttpClient;ProtocolBufferReceiver"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="ProtocolBufferSender:Clean;BsonDocument:Clean;HttpClient:Clean;ProtocolBufferReceiver:Clean"/>
+        <CallTarget Targets="ProtocolBufferSender:Clean;HttpClient:Clean;ProtocolBufferReceiver:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="ProtocolBufferSender:Make;BsonDocument:Make;HttpClient:Make;ProtocolBufferReceiver:Make"/>
+        <CallTarget Targets="ProtocolBufferSender:Make;HttpClient:Make;ProtocolBufferReceiver:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

@@ -1,9 +1,9 @@
-object Form3: TForm3
+object fxMain: TfxMain
   Left = 0
   Top = 0
-  Caption = 'Form3'
-  ClientHeight = 299
-  ClientWidth = 635
+  Caption = 'Bson Document Example'
+  ClientHeight = 517
+  ClientWidth = 620
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

@@ -4,10 +4,20 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.StdCtrls;
 
 type
-  TForm4 = class(TForm)
+  TfxMain = class(TForm)
+    btnHttpRequest: TButton;
+    edtURL: TEdit;
+    lblURL: TLabel;
+    cbMethod: TComboBox;
+    PageControl1: TPageControl;
+    tsRequest: TTabSheet;
+    TabSheet2: TTabSheet;
+    mResponseData: TMemo;
+    mRequestData: TMemo;
+    StatusBar1: TStatusBar;
   private
     { Private declarations }
   public
@@ -15,7 +25,7 @@ type
   end;
 
 var
-  Form4: TForm4;
+  fxMain: TfxMain;
 
 implementation
 
