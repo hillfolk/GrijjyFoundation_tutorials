@@ -19,11 +19,13 @@ type
         mRequestData : TMemo;
         StatusBar1 : TStatusBar;
         procedure btnHttpRequestClick(Sender : TObject);
+    procedure FormCreate(Sender: TObject);
     private
         { Private declarations }
         FHttpClientManager : TgoHttpClientManager;
     public
         { Public declarations }
+
     end;
 
 var
@@ -38,12 +40,24 @@ var
     LHttpClient     : TgoHttpClient;
     LResponseString : string;
 begin
-    LHttpClient := TgoHttpClient.Create;
+    LHttpClient := TgoHttpClient.Create(True);
+
+    LHttpClient.UserAgent   := 'QWM 1.0';
+    LHttpClient.ContentType := 'application/json';
     try
-        LResponseString := LHttpClient.Get(edtURL.Text, 100, 100);
+        LResponseString := LHttpClient.Get(edtURL.Text);
+        if LHttpClient.ResponseStatusCode = 200 then begin
+            mResponseData.Text := LResponseString;
+        end;
+
     finally
         FHttpClientManager.Release(LHttpClient);
     end;
+end;
+
+procedure TfxMain.FormCreate(Sender: TObject);
+begin
+    FHttpClientManager := TgoHttpClientManager.Create;
 end;
 
 end.

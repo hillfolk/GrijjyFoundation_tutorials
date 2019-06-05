@@ -11,6 +11,7 @@ object fxMain: TfxMain
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object lblURL: TLabel
@@ -35,6 +36,7 @@ object fxMain: TfxMain
     Width = 431
     Height = 21
     TabOrder = 1
+    Text = 'http://www.hillfolk.org'
   end
   object cbMethod: TComboBox
     Left = 477
@@ -55,7 +57,7 @@ object fxMain: TfxMain
     Top = 35
     Width = 558
     Height = 286
-    ActivePage = tsRequest
+    ActivePage = TabSheet2
     TabOrder = 3
     object tsRequest: TTabSheet
       Caption = 'Request'
