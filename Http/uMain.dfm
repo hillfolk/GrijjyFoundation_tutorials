@@ -27,6 +27,7 @@ object fxMain: TfxMain
     Height = 57
     Caption = 'REQUEST'
     TabOrder = 0
+    OnClick = btnHttpRequestClick
   end
   object edtURL: TEdit
     Left = 40
@@ -54,11 +55,10 @@ object fxMain: TfxMain
     Top = 35
     Width = 558
     Height = 286
-    ActivePage = TabSheet2
+    ActivePage = tsRequest
     TabOrder = 3
     object tsRequest: TTabSheet
       Caption = 'Request'
-      ExplicitHeight = 142
       object mRequestData: TMemo
         Left = 11
         Top = 11
@@ -70,7 +70,6 @@ object fxMain: TfxMain
     object TabSheet2: TTabSheet
       Caption = 'Response'
       ImageIndex = 1
-      ExplicitHeight = 142
       object mResponseData: TMemo
         Left = 8
         Top = 8
@@ -89,8 +88,5 @@ object fxMain: TfxMain
       item
         Width = 50
       end>
-    ExplicitLeft = 112
-    ExplicitTop = 368
-    ExplicitWidth = 0
   end
 end
