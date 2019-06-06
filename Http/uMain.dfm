@@ -46,6 +46,7 @@ object fxMain: TfxMain
     ItemIndex = 0
     TabOrder = 2
     Text = 'GET'
+    OnChange = cbMethodChange
     Items.Strings = (
       'GET'
       'POST'
@@ -57,7 +58,7 @@ object fxMain: TfxMain
     Top = 35
     Width = 558
     Height = 286
-    ActivePage = TabSheet2
+    ActivePage = tsRequest
     TabOrder = 3
     object tsRequest: TTabSheet
       Caption = 'Request'

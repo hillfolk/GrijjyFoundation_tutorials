@@ -19,7 +19,8 @@ type
         mRequestData : TMemo;
         StatusBar1 : TStatusBar;
         procedure btnHttpRequestClick(Sender : TObject);
-    procedure FormCreate(Sender: TObject);
+        procedure FormCreate(Sender : TObject);
+        procedure cbMethodChange(Sender : TObject);
     private
         { Private declarations }
         FHttpClientManager : TgoHttpClientManager;
@@ -45,17 +46,46 @@ begin
     LHttpClient.UserAgent   := 'QWM 1.0';
     LHttpClient.ContentType := 'application/json';
     try
-        LResponseString := LHttpClient.Get(edtURL.Text);
+        LHttpClient.RequestBody := mRequestData.Text;
+        case cbMethod.ItemIndex of
+            // GET
+            // POST
+            // PUT
+            // DELETE
+
+            0 : begin
+
+                    LResponseString := LHttpClient.Get(edtURL.Text);
+                end;
+            1 : begin
+                    LResponseString := LHttpClient.POST(edtURL.Text);
+
+                end;
+            2 : begin
+                    LResponseString := LHttpClient.Put(edtURL.Text);
+
+                end;
+            3 : begin
+                    LResponseString := LHttpClient.Delete(edtURL.Text);
+                end;
+
+        end;
         if LHttpClient.ResponseStatusCode = 200 then begin
             mResponseData.Text := LResponseString;
         end;
-
     finally
         FHttpClientManager.Release(LHttpClient);
     end;
 end;
 
-procedure TfxMain.FormCreate(Sender: TObject);
+procedure TfxMain.cbMethodChange(Sender : TObject);
+begin
+    if cbMethod.ItemIndex < 0 then begin
+        cbMethod.ItemIndex := 0;
+    end;
+end;
+
+procedure TfxMain.FormCreate(Sender : TObject);
 begin
     FHttpClientManager := TgoHttpClientManager.Create;
 end;
