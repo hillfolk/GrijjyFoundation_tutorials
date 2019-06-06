@@ -2,13 +2,13 @@ program HttpClient;
 
 uses
   Vcl.Forms,
-  uMain in 'uMain.pas' {Form4};
+  uMain in 'uMain.pas' {fxMain};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TForm4, Form4);
+  Application.CreateForm(TfxMain, fxMain);
   Application.Run;
 end.
